@@ -50,17 +50,6 @@ pipeline{
                 }
              }
         }
-        stage('Maven Build'){
-
-             steps{
-
-              script{
-                   
-                   sh 'mvn clean install'
-
-                }
-             }
-        }
         stage('Quality Gate status Check'){
 
              steps{
@@ -68,6 +57,17 @@ pipeline{
               script{
                    
                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api'
+
+                }
+             }
+        }
+        stage('Maven Build'){
+
+             steps{
+
+              script{
+                   
+                   sh 'mvn clean install'
 
                 }
              }
