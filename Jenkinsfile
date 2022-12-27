@@ -37,6 +37,19 @@ pipeline{
                 }
              }
         }
+        stage('Static Code Analysis'){
+
+             steps{
+
+              script{
+                   
+                  withSonarQubeEnv(credentialsId: 'sonar-api') {
+                     
+                     sh 'mvn clean package sonar:sonar'
+                  }
+                }
+             }
+        }
         stage('Maven Build'){
 
              steps{
@@ -50,3 +63,5 @@ pipeline{
         }
     }
 }
+
+// squ_531616e45ae941db981c0e09f5721d0ca515e4d4
