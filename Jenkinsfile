@@ -15,13 +15,24 @@ pipeline{
                 }
             }
         }
-            stage('Unit Test'){
+        stage('Unit Test'){
 
              steps{
 
               script{
                    
                    sh 'mvn test'
+
+                }
+             }
+        }
+        stage('Integration Test'){
+
+             steps{
+
+              script{
+                   
+                   sh 'mvn verify -DskipUnitTests'
 
                 }
              }
