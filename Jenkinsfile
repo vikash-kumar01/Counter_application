@@ -16,11 +16,15 @@ pipeline{
             }
             stage('Unit Test'){
 
-                script{
+             steps{
+
+              script{
                    
                    sh 'mvn test'
 
                 }
+             }
+
             }
         }
     }
